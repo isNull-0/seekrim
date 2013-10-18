@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <!--第1部分-->
+   <LinearLayout
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/bg_title_bar"
+          android:orientation="horizontal"
+           >
+       <ImageButton
+               android:id="@+id/searchButton1"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/abs__ic_search"
+               android:background="@drawable/btn_weight"
+               android:layout_gravity="center"
+               android:layout_marginLeft="10dp"
+               >
+       </ImageButton>
+       <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="搜周边"
+               android:layout_weight="1"
+               android:gravity="center"
+               android:layout_gravity="center_vertical"
+               android:textSize="20dp"
+               android:textColor="#ffffff"
+                            >
+
+       </TextView>
+       <ImageButton
+               android:id="@+id/setButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:src="@drawable/ic_action_setting"
+               android:background="@drawable/btn_weight"
+               android:layout_gravity="center"
+               android:layout_marginRight="10dp"
+               >
+       </ImageButton>
+    </LinearLayout>
+    <!--第2部分-->
+    <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            >
+        <ListView android:id="@+id/listView1"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+
+                  >
+        </ListView>
+
+
+     </LinearLayout>
+    <!--第3部分-->
+    <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_title_bar"
+            android:orientation="horizontal"
+
+            >
+
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="定位中，请稍等..."
+                android:layout_weight="1"
+                android:gravity="left"
+                android:layout_gravity="center_vertical"
+                android:textSize="17dp"
+                android:textColor="#333333"
+                android:layout_marginLeft="10dp"
+                >
+
+        </TextView>
+        <ImageButton
+                android:id="@+id/locationButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_localbar_location"
+                android:background="@drawable/btn_weight"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                >
+        </ImageButton>
+    </LinearLayout>
+
+</LinearLayout>
+

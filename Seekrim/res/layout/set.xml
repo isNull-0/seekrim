@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:background="@drawable/bg_title_bar"
+            android:padding="5dp"
+            >
+            <ImageButton
+                    android:id="@+id/backButton2"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_nav_back"
+                    android:background="@drawable/btn_weight">
+            </ImageButton>
+            <TextView
+                    android:id="@+id/two_itemize_title_TextView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="关于"
+                    android:layout_centerVertical="true"
+                    android:textSize="20dp"
+                    android:textColor="#ffffff"
+                    >
+
+            </TextView>
+    </RelativeLayout>
+     <LinearLayout
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+              android:background="#ffffff"
+
+             >
+         <TextView
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:text="软件版本1.0.0"
+                 android:gravity="center"
+                 android:paddingTop="10dp"
+                 android:textSize="18dp"
+                 android:textColor="#000000"
+
+                 />
+
+             </LinearLayout>
+
+</LinearLayout>
+

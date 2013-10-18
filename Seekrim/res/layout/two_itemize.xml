@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+        >
+    <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:background="@drawable/bg_title_bar"
+
+            >
+            <ImageButton
+                    android:id="@+id/two_itemize_title_button"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:src="@drawable/ic_nav_back"
+                    android:background="@drawable/btn_weight"
+                    android:onClick="button2OnClick"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    >
+            </ImageButton>
+            <TextView
+                    android:id="@+id/two_itemize_title_TextView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="餐饮服务"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="20dp"
+                    android:textColor="#ffffff"
+                    >
+
+            </TextView>
+    </LinearLayout>
+    <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            >
+        <ListView android:id="@+id/listView2"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+
+                >
+        </ListView>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
