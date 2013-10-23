@@ -9,9 +9,6 @@ package com.example.seekrim.EntityConstant;
  */
 public class EntityConstent {
     public static final String[] FIRST_DATA = {"餐饮服务","购物服务","生活服务","体育休闲服务","医疗保健服务","住宿服务","科教文化服务","交通设施服务","公共设施"};
-    public static final String[] TEMP1= {"黄记煌三汁焖锅","香港私家菜天子海鲜火锅","老爹红麻辣涮（竹笆市店）","小肥羊火锅店（钟楼广场店）"};
-    public static final String[] TEMP2= {"西安南大街52号南附楼内3层","南大街","","中路广场"};
-    public static final String[] TEMP3= {"500m","800m","1.2m","2.2m"};
     public static final String[][] SECOND_DATA = {
             {"中餐厅","外国餐厅","快餐厅","休闲餐饮场所","咖啡厅","茶艺馆","冷饮店","糕饼店","甜品店"},
             {"商场","便民商店/便利店","家电电子卖场","超级市场","花鸟鱼虫市场","家居建材市场","综合市场","文化用品店","体育用品店","特色商业街","服装鞋帽皮具店","专卖店","特殊买卖场所","个人用品/化妆品店"},
