@@ -1,11 +1,9 @@
-package com.example.Seekrim;
+package com.example.seekrim;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 /**
@@ -32,7 +30,6 @@ public class SetActivity extends Activity {
     }
 
     private void backbutton2OnClick(){
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
+        SetActivity.this.finish();
     }
 }

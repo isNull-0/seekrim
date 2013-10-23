@@ -18,7 +18,7 @@
                android:src="@drawable/abs__ic_search"
                android:background="@drawable/btn_weight"
                android:layout_gravity="center"
-               android:layout_marginLeft="10dp"
+               android:layout_marginLeft="5dp"
                >
        </ImageButton>
        <TextView
@@ -37,10 +37,10 @@
                android:id="@+id/setButton"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:src="@drawable/ic_action_setting"
+                android:src="@drawable/ic_action_setting"
                android:background="@drawable/btn_weight"
                android:layout_gravity="center"
-               android:layout_marginRight="10dp"
+               android:layout_marginRight="5dp"
                >
        </ImageButton>
     </LinearLayout>
@@ -70,15 +70,16 @@
             >
 
         <TextView
+                android:id="@+id/locationTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="定位中，请稍等..."
+                android:text="点击按钮,可轻松定位..."
                 android:layout_weight="1"
                 android:gravity="left"
                 android:layout_gravity="center_vertical"
                 android:textSize="17dp"
                 android:textColor="#333333"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="5dp"
                 >
 
         </TextView>
@@ -89,7 +90,7 @@
                 android:src="@drawable/ic_localbar_location"
                 android:background="@drawable/btn_weight"
                 android:layout_gravity="center"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="5dp"
                 >
         </ImageButton>
     </LinearLayout>

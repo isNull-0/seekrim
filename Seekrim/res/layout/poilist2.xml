@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ffffff">
+    <!--第1部分-->
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_title_bar"
+            >
+        <ImageButton
+                android:id="@+id/backRadioButton"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_nav_back"
+
+                android:background="@drawable/btn_weight">
+        </ImageButton>
+        <TextView
+                android:id="@+id/nameRadioText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="中餐厅"
+                android:textSize="20dp"
+                android:textColor="#ffffff"
+                >
+
+        </TextView>
+        <Button
+                android:id="@+id/refreshRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/u125_normal"
+                android:layout_toLeftOf="@+id/listRadioButton"
+                android:layout_centerVertical="true"></Button>
+        <Button
+                android:id="@+id/listRadioButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_action_list"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+
+                ></Button>
+    </RelativeLayout>
+    <!--第2部分-->
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+        <Button
+                android:id="@+id/scopeButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/u39_normal"
+                android:onClick="scopeButtonOnClick"
+
+                >
+        </Button>
+        <TextView
+                android:id="@+id/scopeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="范围：3000m"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="100dp"
+                ></TextView>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/u42_normal"
+                android:layout_toRightOf="@id/scopeText"
+                android:layout_centerInParent="true"
+                >
+        </Button>
+    </RelativeLayout>
+    <!--第3部分-->
+    <LinearLayout
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            >
+        <ListView android:id="@+id/poilistView"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+
+                >
+        </ListView>
+
+
+    </LinearLayout>
+</LinearLayout>

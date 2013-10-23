@@ -4,22 +4,21 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-    <LinearLayout
+    <RelativeLayout
             android:layout_height="wrap_content"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:background="@drawable/bg_title_bar"
-
             >
             <ImageButton
                     android:id="@+id/two_itemize_title_button"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:src="@drawable/ic_nav_back"
-                    android:background="@drawable/btn_weight"
+
+                    android:layout_marginLeft="5dp"
+                   android:layout_centerVertical="true"
                     android:onClick="button2OnClick"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    >
+                    android:src="@drawable/ic_nav_back"
+                    android:background="@drawable/btn_weight">
             </ImageButton>
             <TextView
                     android:id="@+id/two_itemize_title_TextView"
@@ -27,28 +26,25 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="餐饮服务"
-                    android:layout_gravity="center_vertical"
+                    android:layout_centerVertical="true"
                     android:textSize="20dp"
                     android:textColor="#ffffff"
                     >
 
             </TextView>
-    </LinearLayout>
+    </RelativeLayout>
     <LinearLayout
-            android:layout_weight="1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ffffff"
-            >
-        <ListView android:id="@+id/listView2"
-                  android:layout_width="fill_parent"
-                  android:layout_height="fill_parent"
-
-                >
-        </ListView>
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#ffffff">
+    <ListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/two_listView">
 
 
+
+    </ListView>
     </LinearLayout>
-
 </LinearLayout>
 

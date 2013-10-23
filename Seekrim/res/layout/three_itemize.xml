@@ -4,7 +4,7 @@
               android:layout_width="fill_parent"
               android:layout_height="fill_parent"
         >
-    <LinearLayout
+    <RelativeLayout
             android:layout_height="wrap_content"
             android:layout_width="fill_parent"
             android:background="@drawable/bg_title_bar"
@@ -13,26 +13,26 @@
                     android:id="@+id/three_itemize_title_button"
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
-                    android:onClick="buttonOnClick"
+                    android:layout_marginLeft="5dp"
+                    android:layout_centerVertical="true"
                     android:src="@drawable/ic_nav_back"
-                    android:background="@drawable/btn_weight"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
-                    >
+
+                    android:background="@drawable/btn_weight">
             </ImageButton>
             <TextView
-                    android:id="@+id/threeItemText"
+                    android:id="@+id/two_itemize_title_TextView"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:layout_gravity="center_vertical"
+                    android:layout_centerVertical="true"
+
                     android:text="中餐厅"
                     android:textSize="20dp"
                     android:textColor="#ffffff"
                     >
 
             </TextView>
-    </LinearLayout>
+    </RelativeLayout>
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

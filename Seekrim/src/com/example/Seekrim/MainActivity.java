@@ -1,16 +1,22 @@
-package com.example.Seekrim;
+package com.example.seekrim;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.*;
-import com.example.Seekrim.EntityConstent.EntityConstent;
-import com.example.Seekrim.util.Tools;
+import com.baidu.location.BDLocation;
+import com.baidu.location.BDLocationListener;
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.example.seekrim.EntityConstant.EntityConstent;
+import com.example.seekrim.util.Tools;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,11 +24,15 @@ import java.util.Map;
 
 public class MainActivity extends Activity {
     private AlertDialog loginDialog;
-    private ListView listView;
+    private ListView listView1;
     private ImageButton searchButton1;
     private ImageButton locationButton;
     private ImageButton setButton;
-    private ImageButton stairButton;
+    private String addrsStr;
+    private BDListenner bdListenner = new BDListenner();
+    private LocationClient locationClient  = null;
+    //private Button stairButton;
+    private TextView showLocationTextView;
     private ArrayList<HashMap<String,?>> data = new ArrayList<HashMap<String, ?>>();
     private int selectedPosition = -1;
     /**
@@ -34,18 +44,25 @@ public class MainActivity extends Activity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.main);
 
-        listView = (ListView)findViewById(R.id.listView1);
+        LocationClientOption option = new LocationClientOption();
+        option.setAddrType("all");
+        option.setOpenGps(true);//打开gps
+        option.setCoorType("bd09ll");     //设置坐标类型
+        locationClient = new LocationClient(this);
+        locationClient.setLocOption(option);
+        locationClient.setAK("258d1c1785a5767ab5685c3b1824db51");
+        locationClient.registerLocationListener(bdListenner);
+        locationClient.start();
+
+        listView1 = (ListView)findViewById(R.id.listView1);
         searchButton1 = (ImageButton) findViewById(R.id.searchButton1);
         locationButton =(ImageButton) findViewById(R.id.locationButton);
         setButton = (ImageButton) findViewById(R.id.setButton);
-        data = Tools.getAdapterData(EntityConstent.FIRST_DATA);
-//        String [] temp={"餐饮服务","购物服务","生活服务","体育休闲服务","住宿服务","医疗保健服务","科教文化服务","交通设施服务","体育休闲服务"};
-//        for( int i =0; i<temp.length;i++){
-//            HashMap<String,Object> item = new HashMap<String, Object>();
-//            item.put("text1",temp[i]);
-//            data.add(item);
-//        }
 
+        showLocationTextView = (TextView) findViewById(R.id.locationTextView);
+
+        data = Tools.getAdapterData(EntityConstent.FIRST_DATA);
+       // data = Tools.getAdapterAllDataWithIndex(1,EntityConstent.THRID_DATA);
 
         searchButton1.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -84,43 +101,60 @@ public class MainActivity extends Activity {
                 return position;  //To change body of implemented methods use File | Settings | File Templates.
             }
 
-            @Override
-            public View getView(final  int position, View convertView, ViewGroup parent) {
+            @Override              //   当前位置
+            public View getView( final int position, View convertView, ViewGroup parent) {
 
                 if (convertView == null){
                     LayoutInflater layoutInflater = getLayoutInflater();
-                    convertView = layoutInflater.inflate(R.layout.main_chat_item,parent,false);
+
+                    convertView = layoutInflater.inflate(R.layout.two_chat_item,parent,false);
 
                 }
                 Map<String,Object>  itemData = (Map<String,Object>) getItem(position);
-                TextView nameTextView =(TextView) convertView.findViewById(R.id.stairnameTextView);
-                nameTextView.setText(itemData.get("text1").toString());
 
-                View Button =convertView.findViewById(R.id.stairButton);
+                TextView nameTextView =(TextView) convertView.findViewById(R.id.index_content_list_textView);
+                nameTextView.setText(itemData.get("index_content_list_textView").toString());
 
-                    Button.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-//                                if(position==0){
-                                Intent intent = new Intent(MainActivity.this,TwoActivity.class);
-                                intent.putExtra("firstIndex",position);
-                                startActivity(intent);
-//                                }
-                             }
-                    });
 
-                return convertView;  //To change body of implemented methods use File | Settings | File Templates.
+               //  获取 BUTTON 的  值
+                Button button = (Button) convertView.findViewById(R.id.index_content_next_button);
+                   button.setOnClickListener(new View.OnClickListener() {
+                       @Override
+                       public void onClick(View view) {
+                           Intent intent = new Intent(MainActivity.this ,TwoActivity.class);
+
+                           intent.putExtra("firstIndex",position);
+                           intent.putExtra("name",data.get(position).get("index_content_list_textView").toString());
+                           startActivity(intent);
+                       }
+                   });
+
+                convertView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(MainActivity.this,PoilistActivity.class);
+                        intent.putExtra("back",1);
+                        intent.putExtra("name",data.get(position).get("index_content_list_textView").toString());
+                        startActivity(intent);
+                    }
+                });
+
+
+
+                return convertView;
             }
         };
 
-        listView.setAdapter(baseAdapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long itemId) {
+                Log.d("TAG","-----------------------------");
                 selectedPosition = position;
-
+                baseAdapter.notifyDataSetChanged();
             }
         });
+        listView1.setAdapter(baseAdapter);
+
 
     }
 
@@ -137,20 +171,81 @@ public class MainActivity extends Activity {
     private void stairButtonOnClick() {
         Intent intent = new Intent(this,TwoActivity.class);
         startActivity(intent);
+
     }
 
     private void locationButtonOnClick() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-        LayoutInflater inflater = LayoutInflater.from(this);
-        View view = inflater.inflate(R.layout.loading, null);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.FILL_PARENT,
-                LinearLayout.LayoutParams.FILL_PARENT);
-        view.setLayoutParams(params);
-        builder.setView(view);
-        loginDialog = builder.create();
-        loginDialog.show();
+
+            locationClient.requestLocation();
+
+
+           MyAsynTask myAsynTask = new MyAsynTask();
+            myAsynTask.execute(0);
+
+    }
+    private  class MyAsynTask extends AsyncTask{
+
+        @Override
+        protected void onPreExecute() {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+            LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+
+            View view = inflater.inflate(R.layout.loading, null);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.FILL_PARENT,
+                    LinearLayout.LayoutParams.FILL_PARENT);
+            view.setLayoutParams(params);
+            builder.setView(view);
+            loginDialog = builder.create();
+            showLocationTextView.setText("定位中...");
+            loginDialog.show();
+            super.onPreExecute();    //To change body of overridden methods use File | Settings | File Templates.
+        }
+        @Override
+        protected Object doInBackground(Object... objects) {
+            if(locationClient!=null&&locationClient.isStarted()){
+
+                locationClient.requestLocation();
+            }
+            return null;  //To change body of implemented methods use File | Settings | File Templates.
+        }
+
+        @Override
+        protected void onPostExecute(Object o) {
+            loginDialog.dismiss();
+
+            if(addrsStr!=null){
+               showLocationTextView.setText(addrsStr);
+            }else{
+                showLocationTextView.setText("定位失败！");
+            }
+            super.onPostExecute(o);    //To change body of overridden methods use File | Settings | File Templates.
+        }
+
+    }
+
+    private class BDListenner implements BDLocationListener{
+
+        @Override
+        public void onReceiveLocation(BDLocation bdLocation) {
+          //  Log.d("seekirm", "onReceiveLocation" + bdLocation);
+
+             if(bdLocation==null){
+                  return;
+             }
+
+                addrsStr = bdLocation.getAddrStr();
+
+            bdLocation.getLatitude();
+            bdLocation.getLongitude();
+        }
+
+        @Override
+        public void onReceivePoi(BDLocation bdLocation) {
+
+        }
     }
 
 }
