@@ -75,10 +75,10 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
             >
-        <!--<com.baidu.mapapi.map.MapView android:id="@+id/bmapView"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_height="fill_parent"-->
-        <!--/>-->
+        <com.baidu.mapapi.map.MapView android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        />
         <TextView
                   android:id="@+id/map_top_Text"
                   android:layout_height="wrap_content"

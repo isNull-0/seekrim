@@ -94,9 +94,12 @@ public class SearchActivity extends Activity {
                 SearchCondition = "";
                 SearchCondition = editSearchText.getText().toString().trim();
                 MessageListMap messageListMap = new MessageListMap();
-                messageListMap.execute(SearchCondition);
+                messageListMap.execute( );
             }
         });
+
+
+
     }
 
     //oncreat 外面
@@ -137,7 +140,7 @@ public class SearchActivity extends Activity {
             if(SearCon!=null) {
                 if(!SearCon.equals("")){
                     String range = "3000";
-                    int count = 10;
+                    int count = 20;
                     int sort = 1;
                     String q="";
                     try {

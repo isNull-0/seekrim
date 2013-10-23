@@ -14,6 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import com.baidu.mapapi.map.MapView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +34,8 @@ public class PoiMapActivity extends Activity {
     private TextView scopeText;
     private Button mapRadioButton;
     private int selectedPosition = -1;
+    private MapView mapView;
+
     private String title3;
     private ArrayList<HashMap<String,?>> data = new ArrayList<HashMap<String, ?>>();
 

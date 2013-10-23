@@ -99,22 +99,4 @@
 
 
     </LinearLayout>
-
-    <LinearLayout
-
-            android:id="@+id/moreLoad"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="#ffffff"
-
-            >
-        <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="更多"
-                android:textSize="20dp"
-                android:gravity="center"
-                ></TextView>
-
-    </LinearLayout>
 </LinearLayout>
